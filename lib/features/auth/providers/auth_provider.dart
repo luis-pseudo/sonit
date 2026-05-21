@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/network/dio_client.dart';
+import '../../location/background_location_service.dart';
 import '../data/auth_repository.dart';
 import '../domain/auth_models.dart';
 
@@ -54,6 +55,7 @@ class AuthNotifier extends AutoDisposeAsyncNotifier<UserSummary?> {
   Future<void> logout() async {
     final repository = ref.read(authRepositoryProvider);
     await repository.logout();
+    await BackgroundLocationService.stopService();
     state = const AsyncValue.data(null);
   }
 }

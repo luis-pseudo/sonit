@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/network/auth_interceptor.dart';
 import 'core/router/app_router.dart';
+import 'features/location/background_location_service.dart';
 import 'firebase_options.dart';
 import 'shared/theme/app_theme.dart';
 
@@ -12,6 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await BackgroundLocationService.initializeService();
   runApp(const ProviderScope(child: SonitApp()));
 }
 
