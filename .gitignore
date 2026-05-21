@@ -12,7 +12,6 @@
 .swiftpm/
 migrate_working_dir/
 secrets.properties
-AGENTS.md
 
 # IntelliJ related
 *.iml
