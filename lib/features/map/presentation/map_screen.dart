@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../../../core/router/app_router.dart';
+import '../../location/background_location_service.dart';
 import '../domain/location_models.dart';
 import '../providers/map_provider.dart';
 import 'widgets/user_blob_marker.dart';
@@ -30,6 +31,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
         return;
       }
       ref.read(mapProvider.notifier).initialize();
+      BackgroundLocationService.startService();
     });
   }
 
