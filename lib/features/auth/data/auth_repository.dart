@@ -42,7 +42,7 @@ class AuthRepository {
           );
       return result.user;
     } on DioException catch (e) {
-      throw Exception(e.message ?? 'Login error');
+      throw Exception(_extractApiMessage(e, fallback: 'Login error'));
     }
   }
 
@@ -83,12 +83,23 @@ class AuthRepository {
           );
       return result.user;
     } on DioException catch (e) {
-      throw Exception(e.message ?? 'Registration error');
+      throw Exception(_extractApiMessage(e, fallback: 'Registration error'));
     }
   }
 
   Future<void> logout() async {
     await _ref.read(secureStorageProvider).clearTokens();
+  }
+
+  String _extractApiMessage(DioException error, {required String fallback}) {
+    final responseData = error.response?.data;
+    if (responseData is Map<String, dynamic>) {
+      final message = responseData['message'];
+      if (message is String && message.isNotEmpty) {
+        return message;
+      }
+    }
+    return error.message ?? fallback;
   }
 }
 
