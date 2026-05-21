@@ -8,6 +8,8 @@ import 'package:latlong2/latlong.dart';
 import '../../../core/router/app_router.dart';
 import '../domain/location_models.dart';
 import '../providers/map_provider.dart';
+import 'widgets/user_blob_marker.dart';
+import 'widgets/user_detail_sheet.dart';
 
 class MapScreen extends ConsumerStatefulWidget {
   const MapScreen({super.key});
@@ -139,9 +141,12 @@ class _MapScreenState extends ConsumerState<MapScreen> {
         .map(
           (user) => Marker(
             point: LatLng(user.latitude, user.longitude),
-            width: 56,
-            height: 56,
-            child: _NearbyUserMarker(user: user),
+            width: 44,
+            height: 44,
+            child: UserBlobMarker(
+              user: user,
+              onTap: () => showUserDetailSheet(context, user),
+            ),
           ),
         )
         .toList(growable: false);
@@ -182,36 +187,6 @@ class _MapScreenState extends ConsumerState<MapScreen> {
     if (mounted) {
       _permissionDialogVisible = false;
     }
-  }
-}
-
-class _NearbyUserMarker extends StatelessWidget {
-  const _NearbyUserMarker({required this.user});
-
-  final NearbyUser user;
-
-  @override
-  Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Colors.blue.shade600,
-        shape: BoxShape.circle,
-        boxShadow: const <BoxShadow>[
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 8,
-            offset: Offset(0, 3),
-          ),
-        ],
-      ),
-      child: const Center(
-        child: Icon(
-          Icons.music_note,
-          color: Colors.white,
-          size: 24,
-        ),
-      ),
-    );
   }
 }
 
