@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "768045279790",
+    "project_id": "sonit-61fa0",
+    "storage_bucket": "sonit-61fa0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768045279790:android:af4b87e6dae87fe6b80dbf",
+        "android_client_info": {
+          "package_name": "com.example.sonit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuwOdLVh85rvl2rzZm9VDyTzmZyTIi_nw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768045279790:android:757fb0701f605713b80dbf",
+        "android_client_info": {
+          "package_name": "com.sonit.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuwOdLVh85rvl2rzZm9VDyTzmZyTIi_nw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
